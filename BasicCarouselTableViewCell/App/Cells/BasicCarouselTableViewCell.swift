@@ -19,14 +19,6 @@ class BasicCarouselTableViewCell: UITableViewCell {
         registerCells()
     }
 
-    /// Gonna try to set a carousel controller here instead
-//    func setCarousel(views: [UIColor], layout: UICollectionViewFlowLayout) {
-//        collectionView.collectionViewLayout = layout
-//        height.constant = layout.itemSize.height + layout.sectionInset.top + layout.sectionInset.bottom
-//        collectionView.layoutIfNeeded() // Positions the collection view items correctly the first time
-//        collectionView.reloadData()
-//    }
-
     func registerCells() {
         collectionView.register(BasicCarouselUnitCollectionViewCell.nib(), forCellWithReuseIdentifier: "unit")
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC06E25A2227076E00A86F45 /* NibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC06E2592227076E00A86F45 /* NibExtensions.swift */; };
 		DC06E25C2227078F00A86F45 /* BasicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC06E25B2227078F00A86F45 /* BasicCollectionView.swift */; };
+		DC06E25F222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC06E25E222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift */; };
 		DC5F4EBD2226117E00D3FE4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F4EBC2226117E00D3FE4E /* AppDelegate.swift */; };
 		DC5F4EBF2226117E00D3FE4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F4EBE2226117E00D3FE4E /* ViewController.swift */; };
 		DC5F4EC22226117E00D3FE4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5F4EC02226117E00D3FE4E /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		DC06E2592227076E00A86F45 /* NibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibExtensions.swift; sourceTree = "<group>"; };
 		DC06E25B2227078F00A86F45 /* BasicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionView.swift; sourceTree = "<group>"; };
+		DC06E25E222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+BasicCarousel.swift"; sourceTree = "<group>"; };
 		DC5F4EB92226117E00D3FE4E /* BasicCarouselTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicCarouselTableViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5F4EBC2226117E00D3FE4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC5F4EBE2226117E00D3FE4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC06E25D222725D500A86F45 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC06E2592227076E00A86F45 /* NibExtensions.swift */,
+				DC06E25E222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DC5F4EB02226117E00D3FE4E = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +93,7 @@
 		DC5F4ECE2226119B00D3FE4E /* App */ = {
 			isa = PBXGroup;
 			children = (
+				DC06E25D222725D500A86F45 /* Extensions */,
 				DC5F4ED3222611CF00D3FE4E /* Cells */,
 				DC5F4ED8222613C900D3FE4E /* BasicCarouselViewModel.swift */,
 				DC06E25B2227078F00A86F45 /* BasicCollectionView.swift */,
@@ -92,7 +104,6 @@
 		DC5F4ED3222611CF00D3FE4E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DC06E2592227076E00A86F45 /* NibExtensions.swift */,
 				DC5F4ED4222611EF00D3FE4E /* BasicCarouselTableViewCell.swift */,
 				DC5F4ED5222611EF00D3FE4E /* BasicCarouselTableViewCell.xib */,
 				DC5F4EDA222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.swift */,
@@ -181,6 +192,7 @@
 				DC5F4EBD2226117E00D3FE4E /* AppDelegate.swift in Sources */,
 				DC06E25C2227078F00A86F45 /* BasicCollectionView.swift in Sources */,
 				DC5F4ED9222613C900D3FE4E /* BasicCarouselViewModel.swift in Sources */,
+				DC06E25F222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

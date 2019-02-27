@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    struct Constants {
+        static let aspectRatio: CGFloat = 0.53
+        static let horizontalPadding: CGFloat = 24
+        static let verticalPadding: CGFloat = 12
+    }
+
     @IBOutlet weak var tableView: UITableView!
 
     var rows: [Row] = []
@@ -22,7 +28,8 @@ class ViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         registerCells()
 
-        showRows()
+        let exampleRows = Row.createExampleRows()
+        show(rows: exampleRows)
 
     }
 
@@ -31,60 +38,64 @@ class ViewController: UIViewController {
         tableView.register(BasicCarouselTableViewCell.nib(), forCellReuseIdentifier: "carousel")
     }
 
-    struct Constants {
-        static let aspectRatio: CGFloat = 0.53
-        static let horizontalPadding: CGFloat = 24
-        static let verticalPadding: CGFloat = 12
+    func show(rows: [Row]) {
+        self.rows = rows
+        tableView.reloadData()
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rows.count
     }
 
-    func showRows() {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = rows[indexPath.row]
+        switch row {
+        case .normal:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = "Regular ole cell #\(indexPath.row)"
+            return cell
 
-        let vm = BasicCarouselViewModel(numItems: 3.75, verticalPadding: Constants.verticalPadding, horizontalPadding: Constants.horizontalPadding) { (width) -> CGFloat in
-            return width * Constants.aspectRatio
+        case .carousel(let vm):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carousel", for: indexPath) as! BasicCarouselTableViewCell
+            let controller = carouselControllers[indexPath] ?? BasicCarouselController(items: vm.items)
+            carouselControllers[indexPath] = controller
+            cell.setCarousel(controller: controller, layout: vm.layout)
+            return cell
         }
+    }
+}
 
-        let vm2 = BasicCarouselViewModel(numItems: 3.75, verticalPadding: Constants.verticalPadding, horizontalPadding: Constants.horizontalPadding) { (width) -> CGFloat in
-            return width * Constants.aspectRatio
-        }
+enum Row {
+    case normal
+    case carousel(BasicCarouselViewModel)
+}
 
-        let vm3 = BasicCarouselViewModel(numItems: 3.75, verticalPadding: Constants.verticalPadding, horizontalPadding: Constants.horizontalPadding) { (width) -> CGFloat in
-            return width * Constants.aspectRatio
+extension Row {
+    static func createExampleRows() -> [Row] {
+        let layout = UICollectionViewFlowLayout.createForBasicCarousel(numItems: 3.75, verticalPadding: ViewController.Constants.verticalPadding, horizontalPadding: ViewController.Constants.horizontalPadding) { (width) -> CGFloat in
+            return width * ViewController.Constants.aspectRatio
         }
-        rows = [
+        let vm = BasicCarouselViewModel(items: BasicCarouselViewModel.createViews(numViews: 40), layout: layout)
+
+        let layout2 = UICollectionViewFlowLayout.createForBasicCarousel(numItems: 5.5, verticalPadding: ViewController.Constants.verticalPadding, horizontalPadding: ViewController.Constants.horizontalPadding) { (width) -> CGFloat in
+            return width * ViewController.Constants.aspectRatio
+        }
+        let vm2 = BasicCarouselViewModel(items: BasicCarouselViewModel.createViews(numViews: 20), layout: layout2)
+
+        let layout3 = UICollectionViewFlowLayout.createForBasicCarousel(numItems: 2.15, verticalPadding: ViewController.Constants.verticalPadding, horizontalPadding: ViewController.Constants.horizontalPadding) { (width) -> CGFloat in
+            return width * ViewController.Constants.aspectRatio
+        }
+        let vm3 = BasicCarouselViewModel(items: BasicCarouselViewModel.createViews(numViews: 10), layout: layout3)
+        return [
             .normal,
             .normal,
             .carousel(vm),
             .normal,
             .normal,
             .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
             .carousel(vm2),
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
-            .normal,
             .normal,
             .normal,
             .normal,
@@ -105,35 +116,5 @@ class ViewController: UIViewController {
             .normal,
             .normal
         ]
-
-        tableView.reloadData()
     }
-}
-
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rows.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = rows[indexPath.row]
-        switch row {
-        case .normal:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "Regular ole cell #\(indexPath.row)"
-            return cell
-
-        case .carousel(let vm):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carousel", for: indexPath) as! BasicCarouselTableViewCell
-            let controller = carouselControllers[indexPath] ?? BasicCarouselController(items: vm.views)
-            carouselControllers[indexPath] = controller
-            cell.setCarousel(controller: controller, layout: vm.layout)
-            return cell
-        }
-    }
-}
-
-enum Row {
-    case normal
-    case carousel(BasicCarouselViewModel)
 }

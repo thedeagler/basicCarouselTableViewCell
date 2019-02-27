@@ -11,31 +11,31 @@ import UIKit
 
 typealias CarouselItemType = UIView
 
+/// Shuttles the data required to present the carousel content
 struct BasicCarouselViewModel {
 
-    struct Constants {
-        static let carouselWidth: CGFloat = UIScreen.main.bounds.width
-        static let interItemSpacing: CGFloat = 8
-    }
+    /// The items which will ultimately be passed to the controller for presentation
+    let items: [CarouselItemType]
 
-    let views: [CarouselItemType]
+    /// Defines the layout of the carousel
     let layout: UICollectionViewFlowLayout
 
     /// Initializes a basic carousel view model object
     ///
-    /// - Parameter numItems: the number of items to show on the initial view of the screen
-    init(numItems: CGFloat = 2.5, verticalPadding: CGFloat = 0, horizontalPadding: CGFloat = 0, heightForWidth: ((CGFloat) -> CGFloat)?) {
-        let itemWidth = (Constants.carouselWidth - (horizontalPadding + Constants.interItemSpacing * floor(numItems))) / numItems
-        let layout = UICollectionViewFlowLayout()
-        let height: CGFloat? = heightForWidth?(itemWidth)
-        layout.itemSize = height.flatMap { CGSize(width: itemWidth, height: $0) } ?? UICollectionViewFlowLayout.automaticSize
-        layout.minimumInteritemSpacing = Constants.interItemSpacing
-        layout.sectionInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
-        layout.scrollDirection = .horizontal
+    /// - Parameters:
+    ///   - items: The items which will ultimately be passed to the controller for presentation
+    ///   - layout: The layout object which defines how items in the carousel are positioned
+    init(items: [CarouselItemType], layout: UICollectionViewFlowLayout) {
+        self.items = items
+        self.layout = layout
+    }
 
-        let INCREMENT: CGFloat = 0.05
 
-        let colors = stride(from: 0, to: 1, by: INCREMENT).map {
+    /// This just creates some mock views
+    static func createViews(numViews: Int) -> [UIView] {
+        let increment: CGFloat = 1 / CGFloat(numViews)
+
+        let colors = stride(from: 0, to: 1, by: increment).map {
             return UIColor(hue: $0, saturation: 1, brightness: 1, alpha: 1)
         }
 
@@ -45,26 +45,24 @@ struct BasicCarouselViewModel {
             return view
         }
 
-        self.init(views: views, layout: layout)
-    }
-
-    init(views: [CarouselItemType], layout: UICollectionViewFlowLayout) {
-        self.views = views
-        self.layout = layout
+        return views
     }
 }
 
-/// The carousel controller holds the data and is the datasource
+/// The carousel controller holds the data and is the datasource.
+/// Note: There's an opportunity to genericize this to use any type of item, given a delegate which configures the item within the view.
 class BasicCarouselController: NSObject {
-    let items: [CarouselItemType]
+    /// The items to show in the carousel
+    private let items: [CarouselItemType]
+
+    /// The scroll offset of the carousel. Useful for presnting multiple carousels in views with view recycling such as table/collection views
     var offset: CGPoint?
 
+    /// Initializes the Basic Carousel Controller
+    ///
+    /// - Parameter items: the items to show in the carousel
     init(items: [CarouselItemType]) {
         self.items = items
-    }
-
-    deinit {
-        print("deinit")
     }
 }
 
@@ -76,8 +74,6 @@ extension BasicCarouselController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = items[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "unit", for: indexPath) as! BasicCarouselUnitCollectionViewCell
-
-//        cell.view.backgroundColor = item
         cell.view.constrainEdges(of: item)
         return cell
     }
@@ -85,6 +81,6 @@ extension BasicCarouselController: UICollectionViewDataSource {
 
 extension BasicCarouselController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        offset = scrollView.contentOffset
+        offset = scrollView.contentOffset // Maintains the scroll position of the collection view for cell reuse.
     }
 }
