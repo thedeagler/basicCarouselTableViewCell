@@ -20,7 +20,7 @@ class BasicCarouselTableViewCell: UITableViewCell {
     }
 
     func registerCells() {
-        collectionView.register(BasicCarouselUnitCollectionViewCell.nib(), forCellWithReuseIdentifier: "unit")
+        collectionView.register(BasicCarouselItemCell.nib(), forCellWithReuseIdentifier: "unit")
     }
 
     func setCarousel(controller: BasicCarouselController, layout: UICollectionViewFlowLayout) {

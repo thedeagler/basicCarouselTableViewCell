@@ -1,5 +1,5 @@
 //
-//  BasicCarouselUnitCollectionViewCell.swift
+//  BasicCarouselItemCell.swift
 //  BasicCarouselTableViewCell
 //
 //  Created by Stephen Wu on 2/26/19.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class BasicCarouselUnitCollectionViewCell: UICollectionViewCell {
+class BasicCarouselItemCell: UICollectionViewCell {
     @IBOutlet weak var view: UIView!
 }

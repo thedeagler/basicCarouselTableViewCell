@@ -73,7 +73,7 @@ extension BasicCarouselController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = items[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "unit", for: indexPath) as! BasicCarouselUnitCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "unit", for: indexPath) as! BasicCarouselItemCell
         cell.view.constrainEdges(of: item)
         return cell
     }
@@ -81,6 +81,7 @@ extension BasicCarouselController: UICollectionViewDataSource {
 
 extension BasicCarouselController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == self else { return }
         offset = scrollView.contentOffset // Maintains the scroll position of the collection view for cell reuse.
     }
 }

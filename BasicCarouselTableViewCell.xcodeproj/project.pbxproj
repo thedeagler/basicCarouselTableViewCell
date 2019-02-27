@@ -10,6 +10,7 @@
 		DC06E25A2227076E00A86F45 /* NibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC06E2592227076E00A86F45 /* NibExtensions.swift */; };
 		DC06E25C2227078F00A86F45 /* BasicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC06E25B2227078F00A86F45 /* BasicCollectionView.swift */; };
 		DC06E25F222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC06E25E222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift */; };
+		DC06E26422273FD400A86F45 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC06E26322273FD400A86F45 /* Row.swift */; };
 		DC5F4EBD2226117E00D3FE4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F4EBC2226117E00D3FE4E /* AppDelegate.swift */; };
 		DC5F4EBF2226117E00D3FE4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F4EBE2226117E00D3FE4E /* ViewController.swift */; };
 		DC5F4EC22226117E00D3FE4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5F4EC02226117E00D3FE4E /* Main.storyboard */; };
@@ -18,14 +19,15 @@
 		DC5F4ED6222611EF00D3FE4E /* BasicCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F4ED4222611EF00D3FE4E /* BasicCarouselTableViewCell.swift */; };
 		DC5F4ED7222611EF00D3FE4E /* BasicCarouselTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC5F4ED5222611EF00D3FE4E /* BasicCarouselTableViewCell.xib */; };
 		DC5F4ED9222613C900D3FE4E /* BasicCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F4ED8222613C900D3FE4E /* BasicCarouselViewModel.swift */; };
-		DC5F4EDC222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F4EDA222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.swift */; };
-		DC5F4EDD222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC5F4EDB222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.xib */; };
+		DC5F4EDC222614E100D3FE4E /* BasicCarouselItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F4EDA222614E100D3FE4E /* BasicCarouselItemCell.swift */; };
+		DC5F4EDD222614E100D3FE4E /* BasicCarouselItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC5F4EDB222614E100D3FE4E /* BasicCarouselItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DC06E2592227076E00A86F45 /* NibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibExtensions.swift; sourceTree = "<group>"; };
 		DC06E25B2227078F00A86F45 /* BasicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionView.swift; sourceTree = "<group>"; };
 		DC06E25E222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+BasicCarousel.swift"; sourceTree = "<group>"; };
+		DC06E26322273FD400A86F45 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		DC5F4EB92226117E00D3FE4E /* BasicCarouselTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicCarouselTableViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5F4EBC2226117E00D3FE4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC5F4EBE2226117E00D3FE4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,8 +38,8 @@
 		DC5F4ED4222611EF00D3FE4E /* BasicCarouselTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCarouselTableViewCell.swift; sourceTree = "<group>"; };
 		DC5F4ED5222611EF00D3FE4E /* BasicCarouselTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicCarouselTableViewCell.xib; sourceTree = "<group>"; };
 		DC5F4ED8222613C900D3FE4E /* BasicCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCarouselViewModel.swift; sourceTree = "<group>"; };
-		DC5F4EDA222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCarouselUnitCollectionViewCell.swift; sourceTree = "<group>"; };
-		DC5F4EDB222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicCarouselUnitCollectionViewCell.xib; sourceTree = "<group>"; };
+		DC5F4EDA222614E100D3FE4E /* BasicCarouselItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCarouselItemCell.swift; sourceTree = "<group>"; };
+		DC5F4EDB222614E100D3FE4E /* BasicCarouselItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicCarouselItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,13 @@
 				DC06E25E222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DC06E26222273FC500A86F45 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		DC5F4EB02226117E00D3FE4E = {
@@ -93,10 +102,12 @@
 		DC5F4ECE2226119B00D3FE4E /* App */ = {
 			isa = PBXGroup;
 			children = (
+				DC06E26222273FC500A86F45 /* Mocks */,
 				DC06E25D222725D500A86F45 /* Extensions */,
 				DC5F4ED3222611CF00D3FE4E /* Cells */,
 				DC5F4ED8222613C900D3FE4E /* BasicCarouselViewModel.swift */,
 				DC06E25B2227078F00A86F45 /* BasicCollectionView.swift */,
+				DC06E26322273FD400A86F45 /* Row.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -106,8 +117,8 @@
 			children = (
 				DC5F4ED4222611EF00D3FE4E /* BasicCarouselTableViewCell.swift */,
 				DC5F4ED5222611EF00D3FE4E /* BasicCarouselTableViewCell.xib */,
-				DC5F4EDA222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.swift */,
-				DC5F4EDB222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.xib */,
+				DC5F4EDA222614E100D3FE4E /* BasicCarouselItemCell.swift */,
+				DC5F4EDB222614E100D3FE4E /* BasicCarouselItemCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -174,7 +185,7 @@
 				DC5F4EC42226118000D3FE4E /* Assets.xcassets in Resources */,
 				DC5F4EC22226117E00D3FE4E /* Main.storyboard in Resources */,
 				DC5F4ED7222611EF00D3FE4E /* BasicCarouselTableViewCell.xib in Resources */,
-				DC5F4EDD222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.xib in Resources */,
+				DC5F4EDD222614E100D3FE4E /* BasicCarouselItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,12 +198,13 @@
 			files = (
 				DC5F4ED6222611EF00D3FE4E /* BasicCarouselTableViewCell.swift in Sources */,
 				DC5F4EBF2226117E00D3FE4E /* ViewController.swift in Sources */,
-				DC5F4EDC222614E100D3FE4E /* BasicCarouselUnitCollectionViewCell.swift in Sources */,
+				DC5F4EDC222614E100D3FE4E /* BasicCarouselItemCell.swift in Sources */,
 				DC06E25A2227076E00A86F45 /* NibExtensions.swift in Sources */,
 				DC5F4EBD2226117E00D3FE4E /* AppDelegate.swift in Sources */,
 				DC06E25C2227078F00A86F45 /* BasicCollectionView.swift in Sources */,
 				DC5F4ED9222613C900D3FE4E /* BasicCarouselViewModel.swift in Sources */,
 				DC06E25F222725ED00A86F45 /* UICollectionViewFlowLayout+BasicCarousel.swift in Sources */,
+				DC06E26422273FD400A86F45 /* Row.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
