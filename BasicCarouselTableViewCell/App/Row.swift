@@ -31,10 +31,16 @@ extension Row {
             return width * ViewController.Constants.aspectRatio
         }
         let vm3 = BasicCarouselViewModel(items: BasicCarouselViewModel.createViews(numViews: 10), layout: layout3)
+
+
+        let vm4 = BasicCarouselViewModel(items: BasicCarouselViewModel.createViews(numViews: 60), numItems: 9, verticalPadding: 12, horizontalPadding: 24)
+
+
+
         return [
             .normal,
             .normal,
-            .carousel(vm),
+            .carousel(vm4),
             .normal,
             .normal,
             .normal,

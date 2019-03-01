@@ -30,6 +30,45 @@ struct BasicCarouselViewModel {
         self.layout = layout
     }
 
+    private struct Constants {
+        static let carouselWidth: CGFloat = UIScreen.main.bounds.width
+        static let interItemSpacing: CGFloat = 8
+    }
+
+
+
+    /// This assumes scale to fill the collection view item
+    init(items: [CarouselItemType], numItems: CGFloat = 2.5, verticalPadding: CGFloat = 0, horizontalPadding: CGFloat = 0) {
+
+        self.items = items
+        let layout = UICollectionViewFlowLayout()
+        let itemWidth = (Constants.carouselWidth - (horizontalPadding + Constants.interItemSpacing * floor(numItems))) / numItems
+
+        var naturalSize: CGSize?
+        if let item = items.first {
+            naturalSize = item.frame.size
+            let hasIntrinsicContentSize = item.intrinsicContentSize != CGSize(width: -1, height: -1)
+            if hasIntrinsicContentSize {
+                naturalSize = item.intrinsicContentSize
+            }
+        }
+
+        if let size = naturalSize {
+            let scaleRatio = itemWidth / size.width
+            let itemHeight = size.height * scaleRatio
+
+            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        } else {
+            layout.itemSize = CGSize(width: itemWidth, height: UICollectionViewFlowLayout.automaticSize.height)
+        }
+
+        layout.minimumInteritemSpacing = Constants.interItemSpacing
+        layout.sectionInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+        layout.scrollDirection = .horizontal
+
+        self.layout = layout
+    }
+
 
     /// This just creates some mock views
     static func createViews(numViews: Int) -> [UIView] {
@@ -40,7 +79,8 @@ struct BasicCarouselViewModel {
         }
 
         let views: [UIView] = colors.map {
-            let view = UIView()
+            let frame = CGRect(x: 0, y: 0, width: 5, height: 4)
+            let view = UIView(frame: frame)
             view.backgroundColor = $0
             return view
         }
@@ -81,7 +121,7 @@ extension BasicCarouselController: UICollectionViewDataSource {
 
 extension BasicCarouselController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard scrollView == self else { return }
+        guard scrollView == self else { return } // Theres a bug here which isnt persisting now. gotta double chceck this identity check
         offset = scrollView.contentOffset // Maintains the scroll position of the collection view for cell reuse.
     }
 }
